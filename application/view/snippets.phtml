@@ -1,0 +1,48 @@
+<h2>&lt;? Online-PHP::<span class='orange'>CodeSnippets</span> ?&gt;</h2>
+<div class="right_panel_ad"><? load_view('right_ad'); ?></div>
+<div class="search_form">
+	<input type="text" class="input_text" name="snippet_name" maxlength="200" value="<?=$search_string?>">
+	<input type="button" class="input_button" id="search_snippet" value="Search" />
+	<input type="button" class="input_button" id="clear_search_snippet" value="Clear" />
+</div>
+<? if (!empty($tag)) { ?>
+	<h3 class="tag_name">tag: <?=$tag?> | <a href="<?=_HTTP_ROOT?>/snippets/">Clear</a></h3>
+<? } ?>
+<? if (!empty($language)) { ?>
+	<h3 class="tag_name">Language: <?=$language?> | <a href="<?=_HTTP_ROOT?>/snippets/">Clear</a></h3>
+<? } ?>
+<ul class="snippets">
+
+    <? foreach ($items as $item) {
+        ?>
+        <li>
+            <div class="meta_data">Posted: <?=date("d M y", $item['date_created'])?> | Language: <a href="<?=_HTTP_ROOT?>/snippets/language/<?=urlencode($item['language'])?>"><?=$item['language']?></a></div>
+            <h3><?=$item['name']?></h3>
+			<p class="snippet_code"><a href="javascript:;" class="load_snippet" snippet_id="<?=$item['id']?>">Load snippet</a></p>
+            <p><?=show_tags($item['tags'])?></p>
+        </li>
+    <? } ?>
+    
+</ul>
+	<script>
+		$(function() {
+			$('a.load_snippet').click(function() {
+				$(this).parent().load('<?=_HTTP_ROOT?>/snippets/load/'+$(this).attr('snippet_id'));
+			});
+
+			$('input#search_snippet').click(function(){
+				var search_text = $(this).prev().val();
+				if (search_text.length > 0) {
+					// replace the '/' char
+					search_text = search_text.replace(/\//g, '___');
+					document.location.href='<?=_HTTP_ROOT?>/snippets/search/'+encodeURIComponent(search_text);
+				}
+			})
+			
+			$('input#clear_search_snippet').click(function(){
+				document.location.href='<?=_HTTP_ROOT?>/snippets/';
+			})
+
+            $('input[name=snippet_name]').focus();
+		});
+	</script>

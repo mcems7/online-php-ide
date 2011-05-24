@@ -1,0 +1,18 @@
+<div class="admin_login">
+    <fieldset>
+        <legend>Login</legend>
+        <form action="<?=_HTTP_ROOT?>/admin/transaction/login/" method="POST">
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" maxlength="100" /><br/>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" maxlength="100" /><br/>
+            <input type="submit" value="Login" class="submit" />
+        </form>
+    </fieldset>
+</div>
+<script>
+    $(function() {
+        // set focus on the login input.
+        $('input[name=username]').focus();
+    });
+</script>

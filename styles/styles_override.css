@@ -1,0 +1,14 @@
+/*
+ This file is to override the basic CSS (used in the IDE application)
+*/
+.top_main_menu_wrapper {
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+.top_main_menu {
+    -moz-box-shadow: 0 0 5px #333;
+    -webkit-box-shadow: 0 0 5px #333;
+    box-shadow: 0 0 5px #333;
+
+}

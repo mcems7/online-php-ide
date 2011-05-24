@@ -1,0 +1,123 @@
+<div class='ide'>
+    <div class="modal_window">
+        <div class="create_directory" style="display: none">
+            <h3 class="modal_window_title">Create Directory</h3>
+            <dl>
+                <dt>New Directory Name</dt>
+                <dt><input type="text" name="new_directory_name" size="60" maxlength="250" /></dt>
+                <dt>In directory</dt>
+                <dt><input type="text" name="new_directory_dirname" size="60" maxlength="250" /></dt>
+                <dt>&nbsp;</dt>
+                <dt>
+                    <input type="button" value="Create" onclick="create_directory();" />&nbsp;
+                    <input type="button" value="Cancel" onclick="close_modal_window();" />
+                </dt>
+            </dl>
+        </div>
+        <div class="create_file" style="display: none">
+            <h3 class="modal_window_title">Create File</h3>
+            <dl>
+                <dt>New File Name</dt>
+                <dt><input type="text" name="new_file_name" size="60" maxlength="250" /></dt>
+                <dt>In directory</dt>
+                <dt><input type="text" name="new_file_dirname" size="60" maxlength="250" /></dt>
+                <dt>&nbsp;</dt>
+                <dt>
+                    <input type="button" value="Create" onclick="create_file();"/>&nbsp;
+                    <input type="button" value="Cancel" onclick="close_modal_window();"/>
+                </dt>
+            </dl>
+        </div>
+        <div class="upload_file" style="display: none">
+            <form id="upload_zip_form">
+            <h3 class="modal_window_title">Upload File</h3>
+            <p>You may upload a single file or several files compressed as ZIP archive</p>
+            <dl>
+                <dt>Choose file</dt>
+                <dt><input type="file" name="upload_file_name" size="40" maxlength="250" /></dt>
+                <dt>To directory</dt>
+                <dt><input type="text" name="upload_file_dirname" size="60" maxlength="250" /></dt>
+                <dt>&nbsp;</dt>
+                <dt>
+                    <input type="button" value="Upload" onclick="upload_file();"/>&nbsp;
+                    <input type="button" value="Cancel" onclick="close_modal_window();"/>
+                </dt>
+            </dl>
+            </form>
+        </div>
+        <div class="download_directory" style="display: none">
+            <h3 class="modal_window_title">Download directory as ZIP Archive</h3>
+            <dl>
+                <dt>Directory</dt>
+                <dt><input type="text" name="download_dirname" size="60" maxlength="250" /></dt>
+                <dt>&nbsp;</dt>
+                <dt>
+                    <input type="button" value="Download" onclick="download_directory();"/>&nbsp;
+                    <input type="button" value="Cancel" onclick="close_modal_window();"/>
+                </dt>
+            </dl>
+            </form>
+        </div>
+        <div class="rename_directory" style="display: none">
+            <h3 class="modal_window_title">Rename directory</h3>
+            <dl>
+                <dt>New directory name (only the name)</dt>
+                <dt><input type="text" name="new_directory_name" size="40" maxlength="250" /></dt>
+                <dt>Old directory full path</dt>
+                <dt><input type="text" name="old_directory_name" size="40" maxlength="250" /></dt>
+                <dt>&nbsp;</dt>
+                <dt>
+                    <input type="button" value="Rename" onclick="rename_directory();"/>&nbsp;
+                    <input type="button" value="Cancel" onclick="close_modal_window();"/>
+                </dt>
+            </dl>
+            </form>
+        </div>
+    </div>
+	<div class='toolbar'>
+		<div class="toolbar_left_panel">
+			<h3><a href="javascript:;"><span style="font-family: courier new">+</span> Files</a></h3>
+			<div class="sub_menu">
+				<ul>
+					<li><a href="javascript:;" onclick="open_modal_window('create_directory')">
+                        <img src="<?=_HTTP_ROOT?>/images/menu/folder_add.png" width=16 height="16" border="0" align="top" />
+                        Create Directory</a></li>
+					<li><a href="javascript:;" onclick="open_modal_window('rename_directory')">
+                        <img src="<?=_HTTP_ROOT?>/images/menu/folder_add.png" width=16 height="16" border="0" align="top" />
+                        Rename Directory</a></li>
+					<li><a href="javascript:;" onclick="open_modal_window('download_directory')">
+                        <img src="<?=_HTTP_ROOT?>/images/menu/folder_go.png" width=16 height="16" border="0" align="top" />
+                        Download directory</a></li>
+					<li><a href="javascript:;" onclick="open_modal_window('upload_file')">
+                        <img src="<?=_HTTP_ROOT?>/images/menu/page_attach.png" width=16 height="16" border="0" align="top" />
+                        Upload File / ZIP</a></li>
+					<li><a href="javascript:;" onclick="open_modal_window('create_file')">
+                        <img src="<?=_HTTP_ROOT?>/images/menu/page.png" width=16 height="16" border="0" align="top" />
+                        Create File</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="toolbar_main_panel">
+			<ul>
+				<li><a href="javascript:;" onclick="save_file()" title="Save file (You can also use shortcut Ctrl-S)">Save</a></li>
+                <li><a href="<?=_HTTP_ROOT?>/?logout=1">Logout</a></li>
+			</ul>
+		</div>
+		<div class="toolbar_right_panel">
+			<h3>Open Files</h3>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<div class='left_panel'></div>
+	<div class="resize_arrow_right">&raquo;</div>
+	<div class='main_panel'><textarea id="code" name="code"></textarea></div>
+    <div class="resize_arrow_left">&laquo;</div>
+	<div class='right_panel'></div>
+    <div class="clear"></div>
+    <div class="bottom_toolbar">
+        <ul>
+            <li class="filename"></li>
+			<li class="notification"></li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,66 @@
+<!DOCTYPE html> 
+<html> 
+    <head> 
+        <meta charset="utf-8" /> 
+        <title>Online PHP IDE
+            <?=(empty($controller) ? '' : ' | '.$controller)?>
+            <?=(empty($GLOBALS['url_params'][0]) ? '' : ' | '.urldecode($GLOBALS['url_params'][0]))?>
+        </title> 
+        <link rel="stylesheet" href="<?=_HTTP_ROOT?>/styles/styles.css" />
+        <? if ($controller == 'admin') { ?>
+        <link rel="stylesheet" href="<?=_HTTP_ROOT?>/styles/admin_styles.css" />
+        <script src="<?=_HTTP_ROOT?>/js/ckeditor/ckeditor.js"></script>
+        <? } ?>
+        
+        <? if (array_key_exists('ftp', $_SESSION) && !empty($_SESSION['ftp']) && empty($controller)) { ?>
+            <link rel="stylesheet" href="<?=_HTTP_ROOT?>/styles/styles_override.css" />
+            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.0/lib/codemirror.css" />
+            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/javascript/javascript.css" />
+            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/xml/xml.css" />
+            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/css/css.css" />
+            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/clike/clike.css" />
+            <? if ($_SERVER['HTTP_HOST'] != 'localhost') { ?>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+            <? } else { ?>
+                <script src="<?= _HTTP_ROOT ?>/js/jquery.min.js"></script>
+            <? } ?>
+            <script>var _HTTP_ROOT = '/ide';</script>
+            <script src="<?= _HTTP_ROOT.'/js/jstree/_lib/jquery.cookie.js' ?>"></script>
+            <script src="<?= _HTTP_ROOT.'/js/jstree/_lib/jquery.hotkeys.js' ?>"></script>
+            <script src="<?= _HTTP_ROOT.'/js/jstree/jquery.jstree.js' ?>"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/lib/codemirror.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/javascript/javascript.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/xml/xml.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/css/css.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/clike/clike.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/php/php.js"></script>
+            <script src="<?= _HTTP_ROOT.'/js/ide_bottom_script.js' ?>"></script>
+        <? } else { ?>
+            <? if ($_SERVER['HTTP_HOST'] != 'localhost') { ?>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
+            <? } else { ?>
+                <script src="<?= _HTTP_ROOT ?>/js/jquery.min.js"></script>
+            <? } ?>
+            <script src="<?= _HTTP_ROOT.'/js/bottom_script.js' ?>"></script>
+        <? } ?>
+        <? // MY FILES // ?>
+    </head>
+    <body>
+        <div class="top_main_menu_wrapper">
+        <ul class="top_main_menu">
+            <li class="spacer"></li>
+            <li><a <?=($controller == '' ? 'class="selected"' : '')?> 
+                    href="<?=_HTTP_ROOT?>/">Homepage/IDE</a></li>
+            <li><a <?=($controller == 'source' ? 'class="selected"' : '')?> 
+                    href="<?=_HTTP_ROOT?>/source/">Source</a></li>
+            <li><a <?=($controller == 'blog' ? 'class="selected"' : '')?> 
+                    href="<?=_HTTP_ROOT?>/blog/">Blog</a></li>
+            <li><a <?=($controller == 'snippets' ? 'class="selected"' : '')?> 
+                    href="<?=_HTTP_ROOT?>/snippets/">Code Snippets</a></li>
+            <li><a <?=($controller == 'tutorials' ? 'class="selected"' : '')?> 
+                    href="<?=_HTTP_ROOT?>/tutorials/">Tutorials</a></li>
+            <li><a <?=($controller == 'about' ? 'class="selected"' : '')?> 
+                    href="<?=_HTTP_ROOT?>/about/">About/FAQ</a></li>
+            <li class="right_label">Menu</li>
+        </ul>
+        </div>

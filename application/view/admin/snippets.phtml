@@ -1,0 +1,65 @@
+<h3>Snippets</h3>
+
+<ul class="items">
+    <li>
+        <h4>New Post</h4>
+        <form action="<?=_HTTP_ROOT?>/admin/transaction/snippets/" method="POST">
+            <input type="hidden" name="post_id" value="new" />
+            Title:<br/>
+            <input type="text" name="name" value='' size="70" /><br/>
+            <a  id="a_new" href="javascript:;" onclick="$('#hide_new').slideDown(); $('#a_new').slideUp();">Show</a><br>
+            <div id="hide_new" style="display: none;">
+                Tags:<br/>
+                <input type="text" name="tags" value='' size="70" /><br/>
+                Languages:<br/>
+                <select name="language_id">
+                    <? foreach ($languages as $lang) { ?>
+                    <option value="<?=$lang['id']?>"><?=$lang['name']?></option>
+                    <? } ?>
+                </select><br/>
+                Description:<br/>
+                <textarea class="rtf" id="description_new" name="description" readony cols="60" rows="1"></textarea><Br/>
+                Code:<br/>
+                <textarea style="border:1px solid #AAA;" id="code_new" name="code" readony cols="60" rows="15"></textarea><Br/>
+            <input type="button" name="edit" value="Edit" onclick="CKEDITOR.replace('description_new');"/>
+            <input type="submit" name="submit" value="Add" />
+            </div>
+        </form>
+    </li>
+    <? if (!empty($items)) foreach ($items as $item) { ?>
+    <li>
+        <h4>#<?=$item['id']?> (<?=htmlentities($item['name'], ENT_NOQUOTES, 'utf-8')?>)</h4>
+        <form action="<?=_HTTP_ROOT?>/admin/transaction/snippets/" method="POST">
+            <input type="hidden" name="post_id" value="<?=$item['id']?>" />
+            Title:<br/>
+            <input type="text" name="name" value='<?=htmlentities($item['name'], ENT_QUOTES, 'utf-8')?>' size="70" /><br/>
+            <a  id="a_<?=$item['id']?>" href="javascript:;" onclick="$('#hide_<?=$item['id']?>').slideDown(); $('#a_<?=$item['id']?>').slideUp();">Show</a><br>
+            <div id="hide_<?=$item['id']?>" style="display:none;">
+                Tags:<br/>
+                <input type="text" name="tags" value='<?=htmlentities($item['tags'], ENT_QUOTES, 'utf-8')?>' size="70" /><br/>
+                Languages:<br/>
+                <select name="language_id">
+                    <? foreach ($languages as $lang) { ?>
+                    <option value="<?=$lang['id']?>" <?=($item['language_id'] == $lang['id'] ? 'selected' : '')?>>
+                        <?=$lang['name']?>
+                    </option>
+                    <? } ?>
+                </select><br/>
+                Description:<br/>
+                <textarea class="rtf" id="description_<?=$item['id']?>" name="description" readony cols="60" rows="1"><?
+                    echo htmlentities($item['description'], ENT_QUOTES, 'utf-8');
+                ?></textarea><Br/>
+                Code:<br/>
+                <textarea style="border:1px solid #AAA;" name="code" readony cols="100" rows="15"><?
+                    echo htmlentities($item['code'], ENT_QUOTES, 'utf-8');
+                ?></textarea><Br/>
+            <input type="button" name="edit" value="Edit" onclick="CKEDITOR.replace('description_<?=$item['id']?>');"/>
+            <input type="submit" name="submit" value="Save" />
+            <input type="submit" name="submit" value="Delete" onclick="if (!confirm('sure?')) { return false; }"/>
+            </div>
+        </form>
+    </li>
+    <? } ?>
+    
+    
+</ul>

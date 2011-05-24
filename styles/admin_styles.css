@@ -1,0 +1,40 @@
+
+ul.admin_menu {
+    height: 20px;
+    background: #CCC;
+    padding: 0 20px;
+    border: 1px solid #AAA;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;    
+}
+
+ul.admin_menu li {
+    float: left;
+}
+
+ul.admin_menu li a {
+    display: block;
+    height: 20px;
+    line-height: 20px;
+    font-size: 12px;
+    padding: 0 10px;
+    text-decoration: none;
+}
+
+ul.admin_menu li a:hover {
+    background: #EEE;
+    color: #222;
+}
+
+.admin ul.items li {
+    padding: 10px;
+    border-bottom: 1px dashed #AAA;
+    margin-bottom: 10px;
+    background: #FFF;
+}
+
+
+.admin textarea.rtf {
+    border: 0;
+}

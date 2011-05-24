@@ -1,0 +1,39 @@
+<div class="login_screen">
+    <div class="login_screen_inner">
+        <div class="login_form">
+            <h2>Login to FTP server</h2>
+            <? if (array_key_exists('login_error', $GLOBALS) && !empty($GLOBALS['login_error'])) { ?>
+            <h3><?=$GLOBALS['login_error']?></h3>
+            <? } ?>
+            <form action="<?=_HTTP_ROOT?>/" method="POST">
+                <dl>
+                    <dt>Host name</dt>
+                    <dd><input type="text" class="input_text" name="ftp_hostname" size="40" maxlength="250" /></dd>
+                    <dt>Login</dt>
+                    <dd><input type="text" class="input_text" name="ftp_username" size="40" maxlength="250" /></dd>
+                    <dt>Password</dt>
+                    <dd><input type="password" class="input_text" name="ftp_password" size="40" maxlength="250" /></dd>
+                    <dt>&nbsp;</dt>
+                    <dd><input type="submit" class="input_submit" value="login" /></dd>
+                </dl>
+            </form>
+        </div>
+    
+        <div class="explanation">
+            <h2>
+                Online PHP IDE<Br />
+                <span>(version <?=$version?>)</span>
+            </h2>
+            <h3>Edit files on your FTP server<br>(Open Source Project)</h3>
+            <ul>
+                <li>OpenSource project</li>
+                <li>Syntax Highlighting</li>
+                <li>Upload / Download zipped directories</li>
+                <li>No private data is stored in the server</li>
+                <li>Easy deployment on your own LAMP server</li>
+                <li>Using of CodeMirror editor module</li>
+                <li>Common keyboard shortcuts</li>
+            </ul>
+        </div>
+    </div>
+</div>

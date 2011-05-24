@@ -1,0 +1,14 @@
+<? // Please don't change the next lines. This way you support the project // ?>
+<? if (strcasecmp($_SERVER['HTTP_HOST'], 'localhost') == 0 || stripos($_SERVER['HTTP_HOST'], '192.168.') !== FALSE) { ?>
+<img src="<?=_HTTP_ROOT?>/images/600.jpg" width="160" height="600" />
+<? } else { ?>
+<script type="text/javascript"><!--
+    google_ad_client = "pub-0924387073800389";
+    /* 160x600, created 12/23/10 */
+    google_ad_slot = "9157689279";
+    google_ad_width = 160;
+    google_ad_height = 600;
+    //-->
+</script>
+<script type="text/javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>
+<? } ?>

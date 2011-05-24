@@ -1,0 +1,55 @@
+</div>
+</div>
+</div>
+<?php
+/**
+ * Check if there is a new version on the server
+ */
+load_model('version');
+
+// check when the last version check was made
+if (time() - get_last_version_check() > (3600 * 24)) { // check once a day
+    update_last_version_check();
+    
+    $servers_version = trim(@file_get_contents('http://online-php.com/version/'));
+    $current_version = trim(get_current_version());
+
+    if (!empty($servers_version)) {
+        if ($current_version != $servers_version) {
+            // show the alert of a new version
+            ?>
+<div class="download_new_version_decoration"></div>
+<div class="download_new_version">
+    <h3>New version available</h3>
+    <p>
+        Please visit <a target="_blank" href="http://online-php.com/source/">online-php.com</a>, and download the new version
+        of the Online PHP IDE.<br />
+        Follow the <a target="_blank" href="http://online-php.com/about/#upgrade">upgrade instructions</a> to keep
+        your application up-to-date.<br/>
+        <span>Current version: <b><?=$current_version?></b><br/>
+        Available version: <b><?=$servers_version?></b><br/></span>
+        <a class="close_download_new_version" href="javascript:;">Close</a>
+    </p>
+</div>
+<script>    
+    if (typeof ($) != 'undefined') {
+        $(function() {
+            $('.download_new_version_decoration').css('opacity', '0.5').fadeIn('fast', function() {
+                $('.download_new_version').css({
+                    left: (parseInt($(window).width()) / 2 - 200) + 'px',
+                    top: (parseInt($(window).height()) / 2 - 200) + 'px'
+                }).fadeIn('fast');
+            })
+            $('.close_download_new_version').live('click', function() {
+                $('.download_new_version').fadeOut('fast', function() {
+                    $('.download_new_version_decoration').fadeOut('fast');
+                })
+            });
+        });
+    }
+</script>
+            <?
+        }
+    }
+    
+}

@@ -1,0 +1,5 @@
+RewriteEngine on
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI} !^/admin
+RewriteRule ^.*$ index.php [QSA]
