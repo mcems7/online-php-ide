@@ -1,6 +1,8 @@
+
+Notice: session_start(): ps_files_cleanup_dir: opendir(/var/lib/php5) failed: Permission denied (13) in /var/www/online-php.com/public_html/config/config.php on line 3
 var files_code = [];
 var editor;
- 
+
 // constants for keyboard shoercuts
 var _KEYS = {
 	TAB	:9,
@@ -490,7 +492,7 @@ $(function(){
 		mode: "application/x-httpd-php",
 		indentUnit: 4,
 		indentWithTabs: true,
-		tabMode: "classic",
+		tabMode: "shift",
 		onKeyEvent: function(e, f) {
                 
 			// check the Ctrl-Tab

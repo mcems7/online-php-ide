@@ -1,16 +1,20 @@
 <?
 
+ini_set('session.gc_maxlifetime', 20);
+ini_set('session.gc_divisor', 1);
+ini_set('session.gc_probability', 0);
+
 session_start();
 
-ini_set('display_errors', '1');
-error_reporting(E_WARNING | E_ERROR);
+ini_set('display_errors', '0');
+//error_reporting(E_WARNING | E_ERROR);
 
 date_default_timezone_set('Asia/Jerusalem');
 
 require dirname(__FILE__) .'/../application/model/ftp.class.php';
 require dirname(__FILE__) .'/funcs.php';
 
-define ('_HTTP_ROOT', '/ide');
+define ('_HTTP_ROOT', '');
 
 // define the database (sqlite) connection
 $GLOBALS['db'] = $db = new PDO('sqlite:'.dirname(__FILE__).'/../db/blog.sqlite.dat');

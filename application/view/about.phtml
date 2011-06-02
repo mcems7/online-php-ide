@@ -1,10 +1,30 @@
 <h2>&lt;? Online-PHP::<span class='orange'>About / FAQ</span> ?&gt;</h2>
 <div class="right_panel_ad"><? load_view('right_ad'); ?></div>
-<div class="about">
+<div class="contact"><div class="contact_inner">
+        <h3>Contact Us</h3>
+        <? if ($from_submit) { ?>
+        <h4>Thank you</h4>
+        <? } else { ?>
+        <form action="<?=_HTTP_ROOT?>/about/submit/" method="post" 
+              onsubmit="if (this.email.value.length == 0 || this.message.value.length == 0) return false;">
+        <dl>
+            <dd>*Email</dd>
+            <dt><input type="text" maxlength="250" name="email" placeholder="Type your email here" /></dt>
+            <dd>*Message</dd>
+            <dt><textarea name="message" placeholder="Type your message here"></textarea></dt>
+            <dt><input class="submit" type="submit" value="Send" /></dt>
+        </dl>   
+        </form>
+        <? } ?>
+</div></div>
+
+
+<ul class="about">
     <li>
     <h3>Intro</h3>
-    <p><a href="<?=_HTTP_ROOT?>/" title="Homepage">Online-php.com</a> is a <b>free online IDE</b> for editing files on an FTP server where usually all the code is stored.<br>
-    This web application uses <a href="http://codemirror.net/" target="_blank">CodeMirror</a> editor module for syntax highlighting and convenient editing.<br><br>
+    <p><a href="<?=_HTTP_ROOT?>/" title="Homepage">Online-php.com</a> is a <b>free online IDE</b> for editing files on an FTP server.<br>
+    This web application is an <b>Open-Source project</b>, and the source can be downloaded from 
+    <a href="<?=_HTTP_ROOT?>/source/">Our source download</a>.<br><br>
     </p>
     </li>
     
@@ -20,30 +40,38 @@
     <li>
     <h3>FAQ</h3>
     <p><b>1. Is this application secure, and how can I be sure that my passwords won't be stolen?</b></p>
-    <p>This web application does not store any private data, code or files on the server, primarilly for security issues. 
-    Actually, you cannot really be sure until you see the entire application's code, but honestly, many of 
-    my friends and I use this application and me neither want my private data to be found in the internet or stored
-    on any PC. <br>
-    <u>This web application uses database only for storing <a href="/?page=blog">blog</a> posts and comments</u>.
-    There is no registration or login required on the site for the same reasons - I cannot take the responsibility on your private data.
+    <p>
+        The webApp is an open-source project, and the source code is being compressed and packed on-the-fly while pressing
+        the "Download" key. This way, the code you download is identical to the code of the site.<br/>
+        As you would see, this web application does not store any private data, code or files on the server, primarilly for security issues.<br />
+        <br />
+        This web application uses database only for storing textual data. Once you download and install the App on your server, 
+        you can continue using it for your private use.<br />
     </p><br>
     <p><b>2. Is the application free?</b></p>
-    <p>Yes, the application is absolutely free.</p><br><br>
+    <p>Yes, the application is absolutely free, you can download the source code and install on your server.<br/>
+    You can submit bug reports, bug fixes or any other comments through the Contact Us form or directly to my Email (www.online.php@gmail.com).<br/>
+    I would appreciate any help you can provide</p><br><br>
     </li>
     
     
     <li>
     <a name="upgrade"></a>
     <h3>Upgrade instructions</h3>
-    <p><b>1. Is this application secure, and how can I be sure that my passwords won't be stolen?</b></p>
-    <p>This web application does not store any private data, code or files on the server, primarilly for security issues. 
-    Actually, you cannot really be sure until you see the entire application's code, but honestly, many of 
-    my friends and I use this application and me neither want my private data to be found in the internet or stored
-    on any PC. <br>
-    <u>This web application uses database only for storing <a href="/?page=blog">blog</a> posts and comments</u>.
-    There is no registration or login required on the site for the same reasons - I cannot take the responsibility on your private data.
-    </p><br>
-    <p><b>2. Is the application free?</b></p>
-    <p>Yes, the application is absolutely free.</p><br><br>
+    <p>
+        Currently there's no automatic upgrade application, but hopefully it will be developed in the near future.<br />
+        <br />
+        <b>For now, these are the steps for the upgrade:</b>
+        <ul>
+            <li><b>Important!!</b> - <u><b>Backup</b> your current application</u> - All the files, including the <b>/db/blog.sqlite.dat</b></li>
+            <li><u><b>Download</b> the new version</u> of the application from the server</li>
+            <li><u><b>Replace the content</b></u> of the current application directory with the new one.</li>
+        </ul>
+        <br />
+        <br />
+        * Please don't remove the PHP code which checks for updates from the server.<br/>
+    
+    </p>
     </li>
-</div>
+</ul>
+<div class="clear"></div>

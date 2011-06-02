@@ -52,7 +52,7 @@ $arr = array();
 
 // add DIRECTORIES to the array
 foreach ($files as $ftype=>$file) {
-	if ($ftype == 'directory') {
+    if ($ftype == 'directory') {
         foreach ($file as $item) {
 			if (in_array($item, array('.', '..'))) continue;
             $arr[] = array(
@@ -64,13 +64,17 @@ foreach ($files as $ftype=>$file) {
                     'icon'=>'folder',
                 ),
                 'attr'=>array(
-                    'id'=>str_replace(DIRECTORY_SEPARATOR, '___', $base_dir.DIRECTORY_SEPARATOR.$item),
+                    'id'=>str_replace('______', '___', 
+                            str_replace('/', '___', 
+                                str_replace(DIRECTORY_SEPARATOR, '___', $base_dir.DIRECTORY_SEPARATOR.$item)
+                            )
+                        ),
                     'rel'=>'folder',
                 ),
                 'state'=>'closed',
             );
         }
-	}
+    }
 }
 
 
@@ -78,7 +82,7 @@ foreach ($files as $ftype=>$file) {
 foreach ($files as $ftype=>$file) {
 	if ($ftype == 'file') {
         foreach ($file as $item) {
-			if (in_array($item, array('.', '..'))) continue;
+	    if (in_array($item, array('.', '..'))) continue;
             $arr[] = array(
                 'data'=>array(
                     'title'=>$item,
@@ -89,7 +93,11 @@ foreach ($files as $ftype=>$file) {
                     'icon'=>_HTTP_ROOT.'/images/file.png',
                 ),
                 'attr'=>array(
-                    'id'=>str_replace(DIRECTORY_SEPARATOR, '___', $base_dir.DIRECTORY_SEPARATOR.$item),
+                    'id'=>str_replace('______', '___', 
+                            str_replace('/', '___', 
+                                str_replace(DIRECTORY_SEPARATOR, '___', $base_dir.DIRECTORY_SEPARATOR.$item)
+                            )
+                        ),
                     'rel'=>'default',
                 ),
                 'state'=>'',

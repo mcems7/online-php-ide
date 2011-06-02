@@ -1,6 +1,5 @@
 <?php
 
-
 // include the configuration file
 require_once dirname(__FILE__).'/config/config.php'; 
 
@@ -11,7 +10,6 @@ $req_uri        = preg_replace('%^'.preg_quote(_HTTP_ROOT, '%').'%i', '', $_SERV
 $url_arr        = parse_url($req_uri);
 $GLOBALS['url_params'] = $url_path_arr   = explode('/', trim($url_arr['path'], '/'));
 $controller     = array_shift($GLOBALS['url_params']);
-
 
 // manage exceptions (where we don't need the header)
 if (!url_is_exception()) {

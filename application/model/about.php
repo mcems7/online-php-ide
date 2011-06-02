@@ -5,27 +5,25 @@
  */
 
 
-function get_about_content() {
-    
-    return '
-<h3>First of all</h3>
-What you are going to do, how, and how will you use it - simple steps:
+function save_contact() {
+    if (!empty($_POST['email']) && !empty($_POST['message'])) {
+        // put the contact us form data to a file.
+        // the LOG directory is chosed, because it's not being added to the source code
+        if (($f = @fopen(_DIR_ROOT . '/log/contact.txt', 'a+')) !== false) {
+            @fputs($f, date('d.M.Y H:i') . ': CONTACT <email:' . htmlentities($_POST['email'], ENT_QUOTES, 'utf-8') . '>' .
+                            "\r\n" . htmlentities($_POST['message'], ENT_QUOTES, 'utf-8') . "\r\n");
 
-1. Configure your application so that all the URLs will lead to one script file - index.php
-2. The main file index.php parses the REQUEST_URI (i.e. the URL) to determine the request
-3. Load scripts and files relevant to the request.
 
-<h3>Redirect</h3> 
-all traffic to index.php
-create file named ".hraccess" in your root folder, and put the next content:
+            $headers = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Content-type: text/html; charset=utf-8' . "\r\n";
+            $headers .= 'From: Online-PHP.com <admin@online-php.com>' . "\r\n";
 
-<ul>
-    <li>1. Configure your application so that all the URLs will lead to one script file - index.php</li>
-    <li>2. The main file index.php parses the REQUEST_URI (i.e. the URL) to determine the request</li>
-    <li>3. Load scripts and files relevant to the request.</li>
-    
-<h3>end</h3>
+            @mail('www.online.php@gmail.com', 'Contact from online-php.com', 
+                    '<b>'.htmlentities($_POST['email'], ENT_QUOTES, 'utf-8')."</b>\r\n<br>".
+                    htmlentities($_POST['message'], ENT_QUOTES, 'utf-8')."\r\n<br>".
+                    '<br><br><a href="http://online-php.com/">Online-PHP</a>', $headers);
 
-';
-    
+            @fclose($f);
+        }
+    }
 }

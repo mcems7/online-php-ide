@@ -1,3 +1,17 @@
+<div class="source_email_window"><div class="source_email_window_inner">
+    <h3>Subscribe to download</h3>
+    <p>
+        For tracking downloads and keeping you up-to-date,<br/>
+        please submit your email for downloading the source code
+    </p>
+    <form action="<?=_HTTP_ROOT?>/source/subscribe/" method="post" onsubmit="return check_subscribe_form(this);">
+        <input type="hidden" name="sec_key" value="<?=uniqid();?>" />
+        <input class="input_text" type="text" name="email" maxlength="250" /><br/>
+        <label for="subscribe"><input type="checkbox" id="subscribe" name="subscribe" value="1" checked/>Receive updates</label><br/>
+        <input class="input_submit" type="submit" value="Subscribe & Download" name="submit" />
+        <input class="input_submit" type="button" value="Cancel" onclick="$('.source_email_window').fadeOut();"/>
+    </form>
+</div></div>
 <h2>&lt;? Online-PHP::<span class='orange'>SourceCode</span> ?&gt;</h2>
 <div class="right_panel_ad"><? load_view('right_ad'); ?></div>
 <ul class="source">
@@ -15,6 +29,9 @@
                     <a href="mailto:www.online.php@gmail.com">www.online.php@gmail.com</a> (as a ZIP archive)<br>
                     (GitHub project will be opened soon)
                 </li>
+                <li>
+                    Please stay up-to-date with the application and do not remove the code lines which perform the update check.
+                </li>
             </ul>
             </p>
         </li>
@@ -27,12 +44,13 @@
                     They can be also useful for internal usage for companies or individual use.
                 </li>
                 <li>
-                    The <b>textual sections</b> (Blog, Snippets, etc) use <b>SQLite database</b> (with PDO wrapper), 
-                    so the server should support these.
+                    The <b>textual sections</b> (Blog, Snippets, etc) use <b>SQLite database</b> (with PDO wrapper).
+                    Check if your server support it.
                 </li>
                 <li>
                     The source code is <b>archived on-the-fly</b>, so the ZIP archive you download is 
-                    identical to the code on the server.
+                    identical to the code on the server.<br/>
+                    You can feel free to use the online version of the application.
                 </li>
                 <li>
                     The <b>source code contains administration panel</b> for all the textual content.<br>
@@ -44,7 +62,7 @@
         </li>
         <li>
             <p class="download_link_wrapper">
-                <a class="download_link" href="<?=_HTTP_ROOT?>/source/download/">Download</a>
+                <a class="download_link" href="#" onclick="open_subscribe_window();">Download</a>
             </p>
         </li>
 </ul>

@@ -6,6 +6,13 @@
 
 load_model('source');
 
+if (!empty($GLOBALS['url_params'][0]) && $GLOBALS['url_params'][0] == 'subscribe') {
+
+    store_subscription($_POST);
+    die();
+}
+
+
 if (!empty($GLOBALS['url_params'][0]) && $GLOBALS['url_params'][0] == 'download') {
     // download the source
     load_model('source');

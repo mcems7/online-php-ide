@@ -77,7 +77,7 @@ class ClsFTP{
   }
   function rawlist($dir="/"){
     $this->login();
-    $arr_dir = ftp_rawlist($this->link_id,$dir);
+    $arr_dir = ftp_rawlist($this->link_id,'-a '.$dir);
     return $arr_dir;
   }
   function mkdir($dir){

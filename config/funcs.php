@@ -24,6 +24,11 @@ function url_is_exception() {
         return true;
     }
     
+    // contact us submit
+    if ($controller == 'about' && $GLOBALS['url_params'][0] == 'submit') {
+        return true;
+    }
+    
     // snippets AJAX loading
 	if ($controller == 'snippets' && $GLOBALS['url_params'][0] == 'load' && !empty($GLOBALS['url_params'][1])
 		&& is_numeric($GLOBALS['url_params'][1]) && $GLOBALS['url_params'][1] > 0) {
