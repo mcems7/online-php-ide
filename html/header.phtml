@@ -14,11 +14,13 @@
         <script>var _HTTP_ROOT = '<?=_HTTP_ROOT?>';</script>
         <? if (array_key_exists('ftp', $_SESSION) && !empty($_SESSION['ftp']) && empty($controller)) { ?>
             <link rel="stylesheet" href="<?=_HTTP_ROOT?>/styles/styles_override.css" />
-            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.0/lib/codemirror.css" />
-            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/javascript/javascript.css" />
-            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/xml/xml.css" />
-            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/css/css.css" />
-            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/clike/clike.css" />
+            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/lib/codemirror.css" />
+            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/theme/default.css" />	 
+	<?/*<link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/javascript/javascript.css" />
+            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/xml/xml.css" />
+            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/css/css.css" />
+*/?>
+            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/clike/clike.css" />
             <? if ($_SERVER['HTTP_HOST'] != 'localhost') { ?>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
             <? } else { ?>
@@ -27,12 +29,12 @@
             <script src="<?= _HTTP_ROOT.'/js/jstree/_lib/jquery.cookie.js' ?>"></script>
             <script src="<?= _HTTP_ROOT.'/js/jstree/_lib/jquery.hotkeys.js' ?>"></script>
             <script src="<?= _HTTP_ROOT.'/js/jstree/jquery.jstree.js' ?>"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/lib/codemirror.js"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/javascript/javascript.js"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/xml/xml.js"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/css/css.js"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/clike/clike.js"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.0/mode/php/php.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/lib/codemirror.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/javascript/javascript.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/xml/xml.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/css/css.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/clike/clike.js"></script>
+            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/php/php.js"></script>
             <script src="<?= _HTTP_ROOT.'/js/ide_bottom_script.js' ?>"></script>
         <? } else { ?>
             <? if ($_SERVER['HTTP_HOST'] != 'localhost') { ?>

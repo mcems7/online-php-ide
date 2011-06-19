@@ -19,9 +19,8 @@ if (!empty($GLOBALS['url_params'][0]) && $GLOBALS['url_params'][0] == 'download'
     
     // create the latest zip archive
     create_source_zip();
-    
     header('Content-Type: application/zip');
-    header('Content-Disposition: attachment; filename=latest.zip');
+    header('Content-Disposition: attachment; filename='.basename(_SOURCE_ZIP_FILE));
     
     readfile(_SOURCE_ZIP_FILE);
     die();

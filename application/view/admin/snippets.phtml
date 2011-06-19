@@ -37,6 +37,9 @@
             <div id="hide_<?=$item['id']?>" style="display:none;">
                 Tags:<br/>
                 <input type="text" name="tags" value='<?=htmlentities($item['tags'], ENT_QUOTES, 'utf-8')?>' size="70" /><br/>
+                Approve:<br/>
+		<input type="radio" name="approve" value='yes' size="70" <?=($item['approved'] ? 'checked' : '')?> /> Yes<br/>
+		<input type="radio" name="approve" value='no' size="70"  <?=(!$item['approved'] ? 'checked' : '')?> /> No<br/>
                 Languages:<br/>
                 <select name="language_id">
                     <? foreach ($languages as $lang) { ?>

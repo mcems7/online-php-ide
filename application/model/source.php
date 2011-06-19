@@ -82,9 +82,18 @@ function add_directory_to_zip(&$z, $dir, $base_dir = NULL) {
 
 function create_source_zip() {
     
-    if (file_exists(_DIR_ROOT . '/source/latest.zip')) {
+    // get the version
+    $v_res = $GLOBALS['db']->query('select `version` from `version` limit 1')->fetch();
+    $version = $v_res['version'];
+    if (empty($version)) {
+       $version = '';
+    }
+	
+    $zip_filename = _DIR_ROOT . '/source/latest'.$version.'.zip';
+    define ('_SOURCE_ZIP_FILE', $zip_filename);	
+    if (file_exists($zip_filename)) {
 
-        if (($fp = @fopen(_DIR_ROOT . '/source/latest.zip', 'r')) !== false) {
+        if (($fp = @fopen($zip_filename, 'r')) !== false) {
             $stats = fstat($fp);            
             fclose($fp);
             
@@ -94,16 +103,16 @@ function create_source_zip() {
             }
         } 
         
-        rename(_DIR_ROOT . '/source/latest.zip', _DIR_ROOT . '/source/latest'.time().'.zip');
+        rename($zip_filename, _DIR_ROOT . '/source/latest'.time().'.zip');
     }
     // Create the latest source of the application 
     // in a ZIP archive
     $z = new ZipArchive();
-    $z->open(_DIR_ROOT.'/source/latest.zip', ZipArchive::CREATE);
+    $z->open($zip_filename, ZipArchive::CREATE);
     add_directory_to_zip($z, _DIR_ROOT);
     
     // define a constant with the path to the file
-    define ('_SOURCE_ZIP_FILE', _DIR_ROOT.'/source/latest.zip');
+    define ('_SOURCE_ZIP_FILE', $zip_filename);
 }
 
 

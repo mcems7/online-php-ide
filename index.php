@@ -1,10 +1,10 @@
 <?php
 
-// include the configuration file
-require_once dirname(__FILE__).'/config/config.php'; 
-
 // base directory path
 define ('_DIR_ROOT', dirname(__FILE__));
+
+// include the configuration file
+require_once dirname(__FILE__).'/config/config.php'; 
 
 $req_uri        = preg_replace('%^'.preg_quote(_HTTP_ROOT, '%').'%i', '', $_SERVER['REQUEST_URI']);
 $url_arr        = parse_url($req_uri);

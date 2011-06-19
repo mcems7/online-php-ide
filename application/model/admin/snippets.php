@@ -33,6 +33,7 @@ function get_items($tut_id = -1) {
 function update_post($post_id, $data) {
     $stmt = $GLOBALS['db']->prepare('
         update `snippets` set 
+	    `approved` = :approved,
             `name` = :name, 
             `description` = :desc,
             `code` = :code, 
@@ -40,6 +41,7 @@ function update_post($post_id, $data) {
             `language_id` = :lang, 
             `date_created` = :date
         where `id` = :id');
+    $stmt->bindValue(':approved', ($data['approve'] == 'yes' ? '1' : '0'), PDO::PARAM_STR);
     $stmt->bindValue(':name', $data['name'], PDO::PARAM_STR);
     $stmt->bindValue(':desc', $data['description'], PDO::PARAM_STR);
     $stmt->bindValue(':code', $data['code'], PDO::PARAM_STR);

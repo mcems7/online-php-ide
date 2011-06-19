@@ -1,9 +1,5 @@
 <?
 
-ini_set('session.gc_maxlifetime', 20);
-ini_set('session.gc_divisor', 1);
-ini_set('session.gc_probability', 0);
-
 session_start();
 
 ini_set('display_errors', '0');
@@ -14,7 +10,16 @@ date_default_timezone_set('Asia/Jerusalem');
 require dirname(__FILE__) .'/../application/model/ftp.class.php';
 require dirname(__FILE__) .'/funcs.php';
 
-define ('_HTTP_ROOT', '');
+if (!defined('_DIR_ROOT')) {
+   define ('_DIR_ROOT', dirname(__FILE__).'/../');
+}
+
+
+// define the http root for the application (how the app is being accessed thru a browser)
+$http_root = str_replace(
+        str_replace('\\', '/', $_SERVER['DOCUMENT_ROOT']), '',
+	str_replace('\\', '/', _DIR_ROOT));
+define('_HTTP_ROOT', $http_root);
 
 // define the database (sqlite) connection
 $GLOBALS['db'] = $db = new PDO('sqlite:'.dirname(__FILE__).'/../db/blog.sqlite.dat');

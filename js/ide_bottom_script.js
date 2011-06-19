@@ -436,7 +436,7 @@ function adjust_ide_size() {
 	var new_height = $(window).height()-100;
 	var new_width = $(window).width()-80;
 	$('.CodeMirror').css('height', new_height+'px');
-	$('.left_panel, .main_panel, .right_panel').css('height', new_height+'px');
+	$('.left_panel, .main_panel, .right_panel, .CodeMirror-scroll').css('height', new_height+'px');
     
     // return the left panel to its original size (width)
     $('.left_panel, .right_panel, .toolbar_left_panel, .toolbar_right_panel').css('width', '180px');
@@ -489,6 +489,7 @@ $(function(){
 		matchBrackets: true,
 		mode: "application/x-httpd-php",
 		indentUnit: 4,
+		tabSize: 4,
 		indentWithTabs: true,
 		tabMode: "classic",
 		onKeyEvent: function(e, f) {
@@ -572,10 +573,10 @@ $(function(){
 		window.resize_orig_main_panel_width = parseInt($('.main_panel').css('width'));
 		window.resize_arrow_right = parseInt($('.resize_arrow_left').css('right'));
 		$('.ide').unbind('mousemove').bind('mousemove', function(e) {
-            var right_panel_width = window.resize_orig_right_panel_width - (e.clientX - window.resize_origX);
-            if (right_panel_width < 100 || right_panel_width > 400) {
-                return;
-            }
+			var right_panel_width = window.resize_orig_right_panel_width - (e.clientX - window.resize_origX);
+            		if (right_panel_width < 100 || right_panel_width > 400) {
+				return;
+            		}
 			$('.right_panel').css('width', (window.resize_orig_right_panel_width - (e.clientX - window.resize_origX)) + 'px');
 			$('.main_panel') .css('width', (window.resize_orig_main_panel_width + (e.clientX - window.resize_origX)) + 'px');
 			$('.toolbar_main_panel').css('width', (window.resize_orig_main_panel_width + (e.clientX - window.resize_origX)) + 'px');
