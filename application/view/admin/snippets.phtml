@@ -3,7 +3,7 @@
 <ul class="items">
     <li>
         <h4>New Post</h4>
-        <form action="<?=_HTTP_ROOT?>/admin/transaction/snippets/" method="POST">
+        <form action="<?php echo _HTTP_ROOT?>/admin/transaction/snippets/" method="POST">
             <input type="hidden" name="post_id" value="new" />
             Title:<br/>
             <input type="text" name="name" value='' size="70" /><br/>
@@ -13,9 +13,9 @@
                 <input type="text" name="tags" value='' size="70" /><br/>
                 Languages:<br/>
                 <select name="language_id">
-                    <? foreach ($languages as $lang) { ?>
-                    <option value="<?=$lang['id']?>"><?=$lang['name']?></option>
-                    <? } ?>
+                    <?php foreach ($languages as $lang) { ?>
+                    <option value="<?php echo $lang['id']?>"><?php echo $lang['name']?></option>
+                    <?php } ?>
                 </select><br/>
                 Description:<br/>
                 <textarea class="rtf" id="description_new" name="description" readony cols="60" rows="1"></textarea><Br/>
@@ -26,43 +26,43 @@
             </div>
         </form>
     </li>
-    <? if (!empty($items)) foreach ($items as $item) { ?>
+    <?php if (!empty($items)) foreach ($items as $item) { ?>
     <li>
-        <h4>#<?=$item['id']?> (<?=htmlentities($item['name'], ENT_NOQUOTES, 'utf-8')?>)</h4>
-        <form action="<?=_HTTP_ROOT?>/admin/transaction/snippets/" method="POST">
-            <input type="hidden" name="post_id" value="<?=$item['id']?>" />
+        <h4>#<?php echo $item['id']?> (<?php echo htmlentities($item['name'], ENT_NOQUOTES, 'utf-8')?>)</h4>
+        <form action="<?php echo _HTTP_ROOT?>/admin/transaction/snippets/" method="POST">
+            <input type="hidden" name="post_id" value="<?php echo $item['id']?>" />
             Title:<br/>
-            <input type="text" name="name" value='<?=htmlentities($item['name'], ENT_QUOTES, 'utf-8')?>' size="70" /><br/>
-            <a  id="a_<?=$item['id']?>" href="javascript:;" onclick="$('#hide_<?=$item['id']?>').slideDown(); $('#a_<?=$item['id']?>').slideUp();">Show</a><br>
-            <div id="hide_<?=$item['id']?>" style="display:none;">
+            <input type="text" name="name" value='<?php echo htmlentities($item['name'], ENT_QUOTES, 'utf-8')?>' size="70" /><br/>
+            <a  id="a_<?php echo $item['id']?>" href="javascript:;" onclick="$('#hide_<?php echo $item['id']?>').slideDown(); $('#a_<?php echo $item['id']?>').slideUp();">Show</a><br>
+            <div id="hide_<?php echo $item['id']?>" style="display:none;">
                 Tags:<br/>
-                <input type="text" name="tags" value='<?=htmlentities($item['tags'], ENT_QUOTES, 'utf-8')?>' size="70" /><br/>
+                <input type="text" name="tags" value='<?php echo htmlentities($item['tags'], ENT_QUOTES, 'utf-8')?>' size="70" /><br/>
                 Approve:<br/>
-		<input type="radio" name="approve" value='yes' size="70" <?=($item['approved'] ? 'checked' : '')?> /> Yes<br/>
-		<input type="radio" name="approve" value='no' size="70"  <?=(!$item['approved'] ? 'checked' : '')?> /> No<br/>
+		<input type="radio" name="approve" value='yes' size="70" <?php echo ($item['approved'] ? 'checked' : '')?> /> Yes<br/>
+		<input type="radio" name="approve" value='no' size="70"  <?php echo (!$item['approved'] ? 'checked' : '')?> /> No<br/>
                 Languages:<br/>
                 <select name="language_id">
-                    <? foreach ($languages as $lang) { ?>
-                    <option value="<?=$lang['id']?>" <?=($item['language_id'] == $lang['id'] ? 'selected' : '')?>>
-                        <?=$lang['name']?>
+                    <?php foreach ($languages as $lang) { ?>
+                    <option value="<?php echo $lang['id']?>" <?php echo ($item['language_id'] == $lang['id'] ? 'selected' : '')?>>
+                        <?php echo $lang['name']?>
                     </option>
-                    <? } ?>
+                    <?php } ?>
                 </select><br/>
                 Description:<br/>
-                <textarea class="rtf" id="description_<?=$item['id']?>" name="description" readony cols="60" rows="1"><?
+                <textarea class="rtf" id="description_<?php echo $item['id']?>" name="description" readony cols="60" rows="1"><?php
                     echo htmlentities($item['description'], ENT_QUOTES, 'utf-8');
                 ?></textarea><Br/>
                 Code:<br/>
-                <textarea style="border:1px solid #AAA;" name="code" readony cols="100" rows="15"><?
+                <textarea style="border:1px solid #AAA;" name="code" readony cols="100" rows="15"><?php
                     echo htmlentities($item['code'], ENT_QUOTES, 'utf-8');
                 ?></textarea><Br/>
-            <input type="button" name="edit" value="Edit" onclick="CKEDITOR.replace('description_<?=$item['id']?>');"/>
+            <input type="button" name="edit" value="Edit" onclick="CKEDITOR.replace('description_<?php echo $item['id']?>');"/>
             <input type="submit" name="submit" value="Save" />
             <input type="submit" name="submit" value="Delete" onclick="if (!confirm('sure?')) { return false; }"/>
             </div>
         </form>
     </li>
-    <? } ?>
+    <?php } ?>
     
     
 </ul>

@@ -1,11 +1,11 @@
-<?
+<?php
 
 session_start();
 
-ini_set('display_errors', '0');
-//error_reporting(E_WARNING | E_ERROR);
+//ini_set('display_errors', '0');
+error_reporting(E_WARNING | E_ERROR);
 
-date_default_timezone_set('Asia/Jerusalem');
+date_default_timezone_set('America/Bogota');
 
 require dirname(__FILE__) .'/../application/model/ftp.class.php';
 require dirname(__FILE__) .'/funcs.php';
@@ -38,4 +38,3 @@ if (array_key_exists('logout', $_GET)) {
 	session_regenerate_id();
 	header('Location: '._HTTP_ROOT.'/');
 }
-

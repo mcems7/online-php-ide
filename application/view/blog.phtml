@@ -1,17 +1,17 @@
 <h2>&lt;? Online-PHP::<span class='orange'>Blog</span> ?&gt;</h2>
-<div class="right_panel_ad"><? load_view('right_ad'); ?></div>
+<div class="right_panel_ad"><?php load_view('right_ad'); ?></div>
 <ul class="blog">
 
-    <? foreach ($items as $item) { 
+    <?php foreach ($items as $item) { 
         $comments_text = is_numeric($item['total_comments']) && $item['total_comments'] > 0 ? 
             ($item['total_comments'] == 1 ? 'One comment' : $item['total_comments'] . ' comments') : 
             'No comments';
         ?>
         <li>
-            <div class="meta_data">Posted: <?=date("d M y", $item['date_created'])?> | <?=$comments_text?></div>
-            <h3><?=$item['title']?></h3>
-            <p><?=$item['content']?></p>
+            <div class="meta_data">Posted: <?php echo date("d M y", $item['date_created'])?> | <?php echo $comments_text?></div>
+            <h3><?php echo $item['title']?></h3>
+            <p><?php echo $item['content']?></p>
         </li>
-    <? } ?>
+    <?php } ?>
     
 </ul>

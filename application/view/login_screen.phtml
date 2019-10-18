@@ -2,10 +2,10 @@
     <div class="login_screen_inner">
         <div class="login_form">
             <h2>Login to FTP server</h2>
-            <? if (array_key_exists('login_error', $GLOBALS) && !empty($GLOBALS['login_error'])) { ?>
-            <h3><?=$GLOBALS['login_error']?></h3>
-            <? } ?>
-            <form action="<?=_HTTP_ROOT?>/" method="POST">
+            <?php if (array_key_exists('login_error', $GLOBALS) && !empty($GLOBALS['login_error'])) { ?>
+            <h3><?php echo $GLOBALS['login_error']?></h3>
+            <?php } ?>
+            <form action="<?php echo _HTTP_ROOT?>/" method="POST">
                 <dl>
                     <dt>Host name</dt>
                     <dd><input type="text" class="input_text" name="ftp_hostname" size="40" maxlength="250" /></dd>
@@ -22,7 +22,7 @@
         <div class="explanation">
             <h2>
                 Online PHP IDE<Br />
-                <span>(version <?=$version?>)</span>
+                <span>(version <?php echo $version?>)</span>
             </h2>
             <h3>Edit files on your FTP server<br>(Open Source Project)</h3>
             <ul>
@@ -31,9 +31,9 @@
                 <li>No private data is stored on the server</li>
                 <li>Easy deployment on your own (L)AMP server</li>
 		<li>Recommend to your friends if you liked the app.<br>
-	    	<?//<!-- Place this tag in your head or just before your close body tag -->//?>
+	    	<?php//<!-- Place this tag in your head or just before your close body tag -->//?>
 	    	    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
-	    	    <?//<!-- Place this tag where you want the +1 button to render -->//?>
+	    	    <?php//<!-- Place this tag where you want the +1 button to render -->//?>
 	    	    <g:plusone></g:plusone>
 
 <iframe src="http://www.facebook.com/plugins/like.php?app_id=222215447807539&amp;href=http%3A%2F%2Fonline-php.com&amp;send=false&amp;layout=button_count&amp;width=150&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font=arial&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:150px; height:21px;" allowTransparency="true"></iframe>

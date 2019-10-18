@@ -26,8 +26,8 @@ if (time() - get_last_version_check() > (3600 * 24)) { // check once a day
         of the Online PHP IDE.<br />
         Follow the <a target="_blank" href="http://online-php.com/about/#upgrade">upgrade instructions</a> to keep
         your application up-to-date.<br/>
-        <span>Current version: <b><?=$current_version?></b><br/>
-        Available version: <b><?=$servers_version?></b><br/></span>
+        <span>Current version: <b><?php echo $current_version?></b><br/>
+        Available version: <b><?php echo $servers_version?></b><br/></span>
         <a class="close_download_new_version" href="javascript:;">Close</a>
     </p>
 </div>
@@ -48,7 +48,7 @@ if (time() - get_last_version_check() > (3600 * 24)) { // check once a day
         });
     }
 </script>
-            <?
+            <?php
         }
     }
     

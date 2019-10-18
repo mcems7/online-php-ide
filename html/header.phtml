@@ -3,48 +3,48 @@
     <head> 
         <meta charset="utf-8" /> 
         <title>Online PHP IDE
-            <?=(empty($controller) ? '' : ' | '.$controller)?>
-            <?=(empty($GLOBALS['url_params'][0]) ? '' : ' | '.urldecode($GLOBALS['url_params'][0]))?>
+            <?php echo (empty($controller) ? '' : ' | '.$controller)?>
+            <?php echo (empty($GLOBALS['url_params'][0]) ? '' : ' | '.urldecode($GLOBALS['url_params'][0]))?>
         </title> 
-        <link rel="stylesheet" href="<?=_HTTP_ROOT?>/styles/styles.css" />
-        <? if ($controller == 'admin') { ?>
-        <link rel="stylesheet" href="<?=_HTTP_ROOT?>/styles/admin_styles.css" />
-        <script src="<?=_HTTP_ROOT?>/js/ckeditor/ckeditor.js"></script>
-        <? } ?>
-        <script>var _HTTP_ROOT = '<?=_HTTP_ROOT?>';</script>
-        <? if (array_key_exists('ftp', $_SESSION) && !empty($_SESSION['ftp']) && empty($controller)) { ?>
-            <link rel="stylesheet" href="<?=_HTTP_ROOT?>/styles/styles_override.css" />
-            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/lib/codemirror.css" />
-            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/theme/default.css" />	 
-	<?/*<link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/javascript/javascript.css" />
-            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/xml/xml.css" />
-            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/css/css.css" />
+        <link rel="stylesheet" href="<?php echo _HTTP_ROOT?>/styles/styles.css" />
+        <?php if ($controller == 'admin') { ?>
+        <link rel="stylesheet" href="<?php echo _HTTP_ROOT?>/styles/admin_styles.css" />
+        <script src="<?php echo _HTTP_ROOT?>/js/ckeditor/ckeditor.js"></script>
+        <?php } ?>
+        <script>var _HTTP_ROOT = '<?php echo _HTTP_ROOT?>';</script>
+        <?php if (array_key_exists('ftp', $_SESSION) && !empty($_SESSION['ftp']) && empty($controller)) { ?>
+            <link rel="stylesheet" href="<?php echo _HTTP_ROOT?>/styles/styles_override.css" />
+            <link rel="stylesheet" href="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/lib/codemirror.css" />
+            <link rel="stylesheet" href="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/theme/default.css" />	 
+	<?php/*<link rel="stylesheet" href="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/mode/javascript/javascript.css" />
+            <link rel="stylesheet" href="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/mode/xml/xml.css" />
+            <link rel="stylesheet" href="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/mode/css/css.css" />
 */?>
-            <link rel="stylesheet" href="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/clike/clike.css" />
-            <? if ($_SERVER['HTTP_HOST'] != 'localhost') { ?>
+            <link rel="stylesheet" href="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/mode/clike/clike.css" />
+            <?php if ($_SERVER['HTTP_HOST'] != 'localhost') { ?>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-            <? } else { ?>
-                <script src="<?= _HTTP_ROOT ?>/js/jquery.min.js"></script>
-            <? } ?>
-            <script src="<?= _HTTP_ROOT.'/js/jstree/_lib/jquery.cookie.js' ?>"></script>
-            <script src="<?= _HTTP_ROOT.'/js/jstree/_lib/jquery.hotkeys.js' ?>"></script>
-            <script src="<?= _HTTP_ROOT.'/js/jstree/jquery.jstree.js' ?>"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/lib/codemirror.js"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/javascript/javascript.js"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/xml/xml.js"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/css/css.js"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/clike/clike.js"></script>
-            <script src="<?= _HTTP_ROOT ?>/CodeMirror-2.1/mode/php/php.js"></script>
-            <script src="<?= _HTTP_ROOT.'/js/ide_bottom_script.js' ?>"></script>
-        <? } else { ?>
-            <? if ($_SERVER['HTTP_HOST'] != 'localhost') { ?>
+            <?php } else { ?>
+                <script src="<?php echo  _HTTP_ROOT ?>/js/jquery.min.js"></script>
+            <?php } ?>
+            <script src="<?php echo  _HTTP_ROOT.'/js/jstree/_lib/jquery.cookie.js' ?>"></script>
+            <script src="<?php echo  _HTTP_ROOT.'/js/jstree/_lib/jquery.hotkeys.js' ?>"></script>
+            <script src="<?php echo  _HTTP_ROOT.'/js/jstree/jquery.jstree.js' ?>"></script>
+            <script src="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/lib/codemirror.js"></script>
+            <script src="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/mode/javascript/javascript.js"></script>
+            <script src="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/mode/xml/xml.js"></script>
+            <script src="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/mode/css/css.js"></script>
+            <script src="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/mode/clike/clike.js"></script>
+            <script src="<?php echo  _HTTP_ROOT ?>/CodeMirror-2.1/mode/php/php.js"></script>
+            <script src="<?php echo  _HTTP_ROOT.'/js/ide_bottom_script.js' ?>"></script>
+        <?php } else { ?>
+            <?php if ($_SERVER['HTTP_HOST'] != 'localhost') { ?>
                 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.2/jquery.min.js"></script>
-            <? } else { ?>
-                <script src="<?= _HTTP_ROOT ?>/js/jquery.min.js"></script>
-            <? } ?>
-            <script src="<?= _HTTP_ROOT.'/js/bottom_script.js' ?>"></script>
-        <? } ?>
-        <? // MY FILES // ?>
+            <?php } else { ?>
+                <script src="<?php echo  _HTTP_ROOT ?>/js/jquery.min.js"></script>
+            <?php } ?>
+            <script src="<?php echo  _HTTP_ROOT.'/js/bottom_script.js' ?>"></script>
+        <?php } ?>
+        <?php // MY FILES // ?>
 
 	<script type="text/javascript">window.google_analytics_uacct = "UA-6335805-3";</script>
 	<script type="text/javascript">
@@ -65,18 +65,18 @@
         <div class="top_main_menu_wrapper">
         <ul class="top_main_menu">
             <li class="spacer"></li>
-            <li><a <?=($controller == '' ? 'class="selected"' : '')?> 
-                    href="<?=_HTTP_ROOT?>/">Homepage/IDE</a></li>
-            <li><a <?=($controller == 'source' ? 'class="selected"' : '')?> 
-                    href="<?=_HTTP_ROOT?>/source/">Source</a></li>
-            <li><a <?=($controller == 'blog' ? 'class="selected"' : '')?> 
-                    href="<?=_HTTP_ROOT?>/blog/">Blog</a></li>
-            <li><a <?=($controller == 'snippets' ? 'class="selected"' : '')?> 
-                    href="<?=_HTTP_ROOT?>/snippets/">Code Snippets</a></li>
-            <li><a <?=($controller == 'tutorials' ? 'class="selected"' : '')?> 
-                    href="<?=_HTTP_ROOT?>/tutorials/">Tutorials</a></li>
-            <li><a <?=($controller == 'about' ? 'class="selected"' : '')?> 
-                    href="<?=_HTTP_ROOT?>/about/">About/FAQ</a></li>
+            <li><a <?php echo ($controller == '' ? 'class="selected"' : '')?> 
+                    href="<?php echo _HTTP_ROOT?>/">Homepage/IDE</a></li>
+            <li><a <?php echo ($controller == 'source' ? 'class="selected"' : '')?> 
+                    href="<?php echo _HTTP_ROOT?>/source/">Source</a></li>
+            <li><a <?php echo ($controller == 'blog' ? 'class="selected"' : '')?> 
+                    href="<?php echo _HTTP_ROOT?>/blog/">Blog</a></li>
+            <li><a <?php echo ($controller == 'snippets' ? 'class="selected"' : '')?> 
+                    href="<?php echo _HTTP_ROOT?>/snippets/">Code Snippets</a></li>
+            <li><a <?php echo ($controller == 'tutorials' ? 'class="selected"' : '')?> 
+                    href="<?php echo _HTTP_ROOT?>/tutorials/">Tutorials</a></li>
+            <li><a <?php echo ($controller == 'about' ? 'class="selected"' : '')?> 
+                    href="<?php echo _HTTP_ROOT?>/about/">About/FAQ</a></li>
             <li class="right_label">Menu</li>
         </ul>
         </div>

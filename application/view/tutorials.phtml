@@ -1,28 +1,28 @@
 <h2>&lt;? Online-PHP::<span class='orange'>Tutorials</span> ?&gt;</h2>
-<div class="right_panel_ad"><? load_view('right_ad'); ?></div>
-<? if ($items === NULL) { ?>
-    <h3 class="back_button"><a href="<?=_HTTP_ROOT?>/tutorials/">&laquo; Back</a></h3>
-<? } ?>
+<div class="right_panel_ad"><?php load_view('right_ad'); ?></div>
+<?php if ($items === NULL) { ?>
+    <h3 class="back_button"><a href="<?php echo _HTTP_ROOT?>/tutorials/">&laquo; Back</a></h3>
+<?php } ?>
 
 <ul class="tutorials">
 
-    <?
+    <?php
     /*
      * Fields: title, intro, content, date_created
      */
     ?>
-    <? if ($items !== NULL) foreach ($items as $item) { ?>
+    <?php if ($items !== NULL) foreach ($items as $item) { ?>
         <li class="intro">
-            <div class="meta_data">Created: <?=date("d M y", $item['date_created'])?></div>
-            <h3><a href="<?=_HTTP_ROOT?>/tutorials/<?=urlencode($item['title'])?>/"><?=$item['title']?></a></h3>
-            <p><?=$item['intro']?> <a href="<?=_HTTP_ROOT?>/tutorials/<?=urlencode($item['title'])?>/">Read more</a></p>
+            <div class="meta_data">Created: <?php echo date("d M y", $item['date_created'])?></div>
+            <h3><a href="<?php echo _HTTP_ROOT?>/tutorials/<?php echo urlencode($item['title'])?>/"><?php echo $item['title']?></a></h3>
+            <p><?php echo $item['intro']?> <a href="<?php echo _HTTP_ROOT?>/tutorials/<?php echo urlencode($item['title'])?>/">Read more</a></p>
         </li>
-    <? } else { ?>
+    <?php } else { ?>
         <li>
-            <div class="meta_data">Created: <?=date("d M y", $item['date_created'])?></div>
-            <h3><?=$item['title']?></h3>
-            <p class="tutorials_content"><?=$item['content']?></p>
+            <div class="meta_data">Created: <?php echo date("d M y", $item['date_created'])?></div>
+            <h3><?php echo $item['title']?></h3>
+            <p class="tutorials_content"><?php echo $item['content']?></p>
         </li>        
-    <? } ?>
+    <?php } ?>
     
 </ul>

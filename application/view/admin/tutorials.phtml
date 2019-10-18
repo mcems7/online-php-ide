@@ -3,40 +3,40 @@
 <ul class="items">
     <li>
         <h4>New Post</h4>
-        <form action="<?=_HTTP_ROOT?>/admin/transaction/tutorials/<?=$item['id']?>" method="POST">
+        <form action="<?php echo _HTTP_ROOT?>/admin/transaction/tutorials/<?php echo $item['id']?>" method="POST">
             <input type="hidden" name="post_id" value="new" />
             Title:<br/>
-            <input type="text" name="title" value='<?=htmlentities($item['title'], ENT_NOQUOTES, 'utf-8')?>' size="70" /><br/>
+            <input type="text" name="title" value='<?php echo htmlentities($item['title'], ENT_NOQUOTES, 'utf-8')?>' size="70" /><br/>
             Intro:<br/>
-            <textarea class="rtf" id="intro_new" name="intro" readony cols="60" rows="1"><?=htmlentities($item['content'], ENT_QUOTES, 'utf-8')?></textarea><Br/>
+            <textarea class="rtf" id="intro_new" name="intro" readony cols="60" rows="1"><?php echo htmlentities($item['content'], ENT_QUOTES, 'utf-8')?></textarea><Br/>
             Content:<br/>
-            <textarea class="rtf" id="content_new" name="content" readony cols="60" rows="1"><?=htmlentities($item['content'], ENT_QUOTES, 'utf-8')?></textarea><Br/>
+            <textarea class="rtf" id="content_new" name="content" readony cols="60" rows="1"><?php echo htmlentities($item['content'], ENT_QUOTES, 'utf-8')?></textarea><Br/>
             <input type="button" name="edit" value="Edit" onclick="CKEDITOR.replace('content_new');CKEDITOR.replace('intro_new');"/>
             <input type="submit" name="submit" value="Add" />
         </form>
     </li>
-    <? if (!empty($items)) foreach ($items as $item) { ?>
+    <?php if (!empty($items)) foreach ($items as $item) { ?>
     <li>
-        <h4>#<?=$item['id']?> (<?=htmlentities($item['title'], ENT_NOQUOTES, 'utf-8')?>)</h4>
-        <form action="<?=_HTTP_ROOT?>/admin/transaction/tutorials/<?=$item['id']?>" method="POST">
-            <input type="hidden" name="post_id" value="<?=$item['id']?>" />
+        <h4>#<?php echo $item['id']?> (<?php echo htmlentities($item['title'], ENT_NOQUOTES, 'utf-8')?>)</h4>
+        <form action="<?php echo _HTTP_ROOT?>/admin/transaction/tutorials/<?php echo $item['id']?>" method="POST">
+            <input type="hidden" name="post_id" value="<?php echo $item['id']?>" />
             Title:<br/>
-            <input type="text" name="title" value='<?=htmlentities($item['title'], ENT_NOQUOTES, 'utf-8')?>' size="70" /><br/>
+            <input type="text" name="title" value='<?php echo htmlentities($item['title'], ENT_NOQUOTES, 'utf-8')?>' size="70" /><br/>
             Intro:<br/>
-            <textarea class="rtf" id="intro_<?=$item['id']?>" name="intro" readony cols="60" rows="3"><?
+            <textarea class="rtf" id="intro_<?php echo $item['id']?>" name="intro" readony cols="60" rows="3"><?php
                 echo htmlentities($item['intro'], ENT_QUOTES, 'utf-8');
             ?></textarea><Br/>
             Content:<br/>
-            <textarea class="rtf" id="content_<?=$item['id']?>" name="content" readony cols="60" rows="3"><?
+            <textarea class="rtf" id="content_<?php echo $item['id']?>" name="content" readony cols="60" rows="3"><?php
                 echo htmlentities($item['content'], ENT_QUOTES, 'utf-8');
             ?></textarea><Br/>
-            <input type="button" name="edit" value="Edit" onclick="CKEDITOR.replace('content_<?=$item['id']?>');CKEDITOR.replace('intro_<?=$item['id']?>');"/>
-            <?/*<input type="button" name="close_edit" value="Close Edit" onclick="CKEDITOR.replace('content_<?=$item['id']?>')"/>*/?>
+            <input type="button" name="edit" value="Edit" onclick="CKEDITOR.replace('content_<?php echo $item['id']?>');CKEDITOR.replace('intro_<?php echo $item['id']?>');"/>
+            <?php/*<input type="button" name="close_edit" value="Close Edit" onclick="CKEDITOR.replace('content_<?php echo $item['id']?>')"/>*/?>
             <input type="submit" name="submit" value="Save" />
             <input type="submit" name="submit" value="Delete" onclick="if (!confirm('sure?')) { return false; }"/>
         </form>
     </li>
-    <? } ?>
+    <?php } ?>
     
     
 </ul>

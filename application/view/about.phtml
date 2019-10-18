@@ -1,11 +1,11 @@
 <h2>&lt;? Online-PHP::<span class='orange'>About / FAQ</span> ?&gt;</h2>
-<div class="right_panel_ad"><? load_view('right_ad'); ?></div>
+<div class="right_panel_ad"><?php load_view('right_ad'); ?></div>
 <div class="contact"><div class="contact_inner">
         <h3>Contact Us</h3>
-        <? if ($from_submit) { ?>
+        <?php if ($from_submit) { ?>
         <h4>Thank you</h4>
-        <? } else { ?>
-        <form action="<?=_HTTP_ROOT?>/about/submit/" method="post" 
+        <?php } else { ?>
+        <form action="<?php echo _HTTP_ROOT?>/about/submit/" method="post" 
               onsubmit="if (this.email.value.length == 0 || this.message.value.length == 0) return false;">
         <dl>
             <dd>*Email</dd>
@@ -15,16 +15,16 @@
             <dt><input class="submit" type="submit" value="Send" /></dt>
         </dl>   
         </form>
-        <? } ?>
+        <?php } ?>
 </div></div>
 
 
 <ul class="about">
     <li>
     <h3>Intro</h3>
-    <p><a href="<?=_HTTP_ROOT?>/" title="Homepage">Online-php.com</a> is a <b>free online IDE</b> for editing files on an FTP server.<br>
+    <p><a href="<?php echo _HTTP_ROOT?>/" title="Homepage">Online-php.com</a> is a <b>free online IDE</b> for editing files on an FTP server.<br>
     This web application is an <b>Open-Source project</b>, and the source can be downloaded from 
-    <a href="<?=_HTTP_ROOT?>/source/">Our source download</a>.<br><br>
+    <a href="<?php echo _HTTP_ROOT?>/source/">Our source download</a>.<br><br>
     </p>
     </li>
     

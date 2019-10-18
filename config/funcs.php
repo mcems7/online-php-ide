@@ -1,4 +1,4 @@
-<?
+<?php
 
 
 function get_files_tree($base_dir = NULL) {
@@ -61,4 +61,4 @@ function load_view($view_name, $params = array()) {
         require_once(dirname(__FILE__).'/../application/view/'.$view_name.'.phtml');
     }
 }
-
+?>
